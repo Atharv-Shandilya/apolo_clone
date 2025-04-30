@@ -1,103 +1,107 @@
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
+import Header from "../components/Header";
+import FilterSidebar from "../components/FilterSidebar";
+import DoctorCard from "../components/DoctorCard";
+import Path from "@/components/Path";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
 
-export default function Home() {
+// Sample data for doctors
+const doctorsData = [
+  {
+    id: 1,
+    name: "Dr. John Doe",
+    specialty: "General Physician",
+    location: "New York",
+    experience: 10,
+  },
+  {
+    id: 2,
+    name: "Dr. Jane Smith",
+    specialty: "Internal Medicine",
+    location: "San Francisco",
+    experience: 8,
+  },
+  {
+    id: 3,
+    name: "Dr. Alice Brown",
+    specialty: "Pediatrician",
+    location: "Los Angeles",
+    experience: 6,
+  },
+  {
+    id: 4,
+    name: "Dr. Bob White",
+    specialty: "General Physician",
+    location: "Chicago",
+    experience: 12,
+  },
+];
+
+const HomePage: React.FC = () => {
+  const [filters, setFilters] = useState({ specialty: "", location: "" });
+
+  // Function to apply filters and update state
+  const handleApplyFilters = (newFilters: {
+    specialty: string;
+    location: string;
+  }) => {
+    setFilters(newFilters);
+  };
+
+  // Filter the doctors based on the applied filters
+  const filteredDoctors = doctorsData.filter((doctor) => {
+    return (
+      (filters.specialty
+        ? doctor.specialty.includes(filters.specialty)
+        : true) &&
+      (filters.location ? doctor.location.includes(filters.location) : true)
+    );
+  });
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="flex w-9/12 m-auto">
+      <div className="flex-1/5 text-black">
+        <FilterSidebar />
+      </div>
+      <div className="flex-1/2">
+        <Path />
+        <section>
+          <div className="flex">
+            <div className="flex-3/4">
+              <h1 className="text-2xl font-bold">
+                Consult General Physicians Online - Internal Medicine
+                Specialists
+              </h1>
+              <span>(763 doctors)</span>
+            </div>
+            <div className="flex-1/4 flex h-12 rounded  border border-gray-400 hover:cursor-pointer justify-center items-center">
+              <button className="flex outline-none hover:cursor-pointer">
+                {" "}
+                <ArrowUpDown />
+                <span className="ml-2 mr-5">Availibility</span>
+                <ChevronDown />
+              </button>
+            </div>
+          </div>
+          <div className="mt-5">
+            <DoctorCard
+              name="Dr. Suraja Nutulapati"
+              specialization="General Physician/ Internal Medicine Specialist"
+              experience="10 YEARS"
+              qualifications="MBBS, MD (INTERNAL MEDICINE)"
+              clinic="Apollo 24|7 Virtual Clinic"
+              location="Telangana Hyderabad"
+              fee={499}
+              isDoctorOfTheHour={true}
+              imageUrl="https://images.apollo247.in/doctors/6fa84b84-3da4-495d-8862-651e49e3d406-1704301126434.png?tr=w-74,c-at_max,f-auto,q=80,dpr-2" // Replace with actual image or placeholder
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          </div>
+        </section>
+      </div>
+      <div className="flex-1/5 ">a</div>
     </div>
   );
-}
+};
+
+export default HomePage;
