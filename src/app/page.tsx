@@ -18,11 +18,11 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="flex w-9/12 m-auto ">
+    <div className="flex mx-[80px] ">
       <div className="flex-1/5 text-black">
         <FilterSidebar />
       </div>
-      <div className="flex-1/2">
+      <div className="max-w-[780px]">
         <Path />
         <section>
           <div className="flex">

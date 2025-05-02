@@ -26,14 +26,10 @@ export default function DoctorCard({
   state,
 }: DoctorCardProps): ReactElement {
   return (
-    <section className="flex ">
+    <section className="flex border border-gray-300  rounded-lg p-4">
       {/* Doctor Image */}
-      <div>
-        <img
-          src={imageUrl}
-          alt={name}
-          className="w-16 h-16 rounded object-cover mr-4"
-        />
+      <div className="flex-1">
+        <img src={imageUrl} alt={name} className=" w-[74px] h-[74px] rounded" />
       </div>
 
       {/* Doctor Info */}
@@ -55,9 +51,10 @@ export default function DoctorCard({
 
       {/* Right Side */}
       <div className="text-right ml-4 self-end">
-        <p className="text-lg font-semibold">₹{fee}</p>
-        <button className="mt-2 px-4 py-1 border border-blue-600 text-blue-600 rounded w-[340px]">
-          Consult Online
+        <p className="text-lg font-semibold text-center">₹{fee}</p>
+        <button className="mt-2 px-4 py-2 border border-blue-600 text-blue-600 rounded w-[340px] text-[10px] flex flex-col items-center">
+          <span className="font-bold"> Consult Online</span>
+          <span>Available in 5 minutes</span>
         </button>
       </div>
     </section>

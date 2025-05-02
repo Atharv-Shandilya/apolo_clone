@@ -48,7 +48,7 @@ export default function FilterSidebar({
   }, [experience, fees, languages, modeOfConsult, facility]);
 
   return (
-    <aside className="w-9/12 max-w-xs border-r border-gray-300 m-3 p-1 space-y-6 text-sm">
+    <aside className="w-9/12 max-w-xs border-r border-gray-300 m-3 py-4 pr-5 space-y-6 text-sm">
       <div className="flex justify-between items-center border-b-2 px-2 border-gray-300">
         <h2 className="text-lg font-semibold">Filters</h2>
         <button className="text-blue-600 hover:underline">Clear All</button>
