@@ -6,68 +6,74 @@ import { ChevronDown, LocationEdit } from "lucide-react";
 
 export default function Header(): ReactElement {
   return (
-    <header className="text-black max-w-full box-shadow ">
-      <div className="container max-w-9/12 mx-auto flex justify-center items-center ">
-        <div className="flex mr-auto">
-          <div className="text-xl font-bold pr-3">
-            <img src="apollo247.svg" alt="" />
-          </div>
-          <div className="flex items-center pl-3">
-            <LocationEdit />
-            <div className="ml-1">
-              <p className="text-xs">Select Location</p>
-              <div className="flex hover:cursor-pointer">
-                <p className="font-bold">Select Address</p>
-                <ChevronDown />
+    <header className="text-black shadow border-b">
+      {/*------------------------------------------------- Top Section ----------------------------------------------------*/}
+      <div className="max-w-[1200px] mx-auto flex items-center justify-between py-3 px-6">
+        <div className="flex items-center space-x-6">
+          <img src="apollo247.svg" alt="Apollo247 Logo" className="w-[60px]" />
+
+          <div className="flex items-center">
+            <LocationEdit className="mr-1" size={28} />
+            <div className="text-left">
+              <p className="text-xs text-gray-600">Select Location</p>
+              <div className="flex items-center hover:cursor-pointer">
+                <p className="font-bold text-xl">Select Address</p>
+                <ChevronDown className="w-4 h-4 ml-1" />
               </div>
             </div>
           </div>
         </div>
 
-        <Search />
-
-        <div className="ml-70">
-          <Login />
+        {/*------------------------------------------------- Search ----------------------------------------------------*/}
+        <div className="flex-1 mx-8">
+          <Search />
         </div>
+
+        {/*------------------------------------------------- Login ----------------------------------------------------*/}
+        <Login />
       </div>
-      <div className="flex justify-center border-t-2 border-gray-300 mt-2 py-2 max-w-full text-sm font-bold h-12 ">
-        <ul className="flex justify-between space-x-6 mt-2 w-7/12">
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Buy Medicines
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Find Doctors
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Lab Test
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Circle Membership
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Health Records
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Diabetes Reversal
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline hover:text-teal-800">
-              Buy Insurance
-            </a>
-          </li>
-        </ul>
+
+      {/*------------------------------------------------- Embedded Site Links ----------------------------------------------------*/}
+      <div className="border-t border-gray-300 bg-white">
+        <div className="max-w-[1200px] mx-auto">
+          <ul className="flex justify-between py-3 px-6 text-sm font-semibold text-gray-700">
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Buy Medicines
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Find Doctors
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Lab Test
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Circle Membership
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Health Records
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Diabetes Reversal
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-teal-800 hover:underline">
+                Buy Insurance
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
   );
