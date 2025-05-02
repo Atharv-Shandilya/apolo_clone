@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
         <section>
           <div className="flex">
             <div className="flex-3/4">
-              <h1 className="text-2xl font-bold">
+              <h1 className="text-2xl font-bold overflow-hidden  ">
                 Consult General Physicians Online - Internal Medicine
                 Specialists
               </h1>
@@ -52,6 +52,7 @@ const HomePage: React.FC = () => {
               location="Telangana Hyderabad"
               fee={499}
               isDoctorOfTheHour={true}
+              state={"Delhi"}
               imageUrl="https://images.apollo247.in/doctors/6fa84b84-3da4-495d-8862-651e49e3d406-1704301126434.png?tr=w-74,c-at_max,f-auto,q=80,dpr-2" // Replace with actual image or placeholder
             />
           </div>
